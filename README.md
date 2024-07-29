@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# Google Drive Clone App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This is a full-stack web application replicating the core functionalities of Google Drive using React for the front-end and Firebase for the back-end. The app features user authentication, file upload, storage, and retrieval, as well as real-time updates and an intuitive user interface.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **User Authentication**: Secure user authentication using Firebase Authentication with Google Sign-In.
+- **File Storage**: Upload, store, and retrieve files using Firebase Storage.
+- **Real-time Database**: Real-time data storage and retrieval with Firebase Firestore, enabling instant updates to the file list.
+- **User Interface**: Intuitive and responsive UI designed with React and Styled-Components, mimicking the look and feel of Google Drive.
+- **File Management**: Users can upload, view, and manage files, with details such as name, size, and last modified date displayed.
+- **Search Functionality**: Integrated search feature to quickly find files within the drive.
+- **Responsive Design**: Fully responsive design for a seamless experience across different devices.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Screenshot
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Google Drive Clone Screenshot](src/assets/Google_Drive_Clone_Login.png)
+![Google Drive Clone Screenshot](src/assets/Google_Drive_Clone_Home.png)
+![Google Drive Clone Screenshot](src/assets/Google_Drive_Clone_AddFile.png)
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Front-end**: React, Styled-Components, Material-UI
+- **Back-end**: Firebase Firestore, Firebase Authentication, Firebase Storage
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```sh
+   git clone https://github.com/adityagangil/Google-Drive-Clone
+   cd google-drive-clone
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install dependencies:
 
-### `npm run eject`
+   ```sh
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Set up Firebase:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
+   - Enable Firebase Authentication and Firestore.
+   - Create a `firebase.js` file in the `src` folder and add your Firebase configuration:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```javascript
+   import firebase from "firebase/app";
+   import "firebase/firestore";
+   import "firebase/auth";
+   import "firebase/storage";
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   const firebaseConfig = {
+     apiKey: "YOUR_API_KEY",
+     authDomain: "YOUR_AUTH_DOMAIN",
+     projectId: "YOUR_PROJECT_ID",
+     storageBucket: "YOUR_STORAGE_BUCKET",
+     messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+     appId: "YOUR_APP_ID",
+   };
 
-## Learn More
+   const firebaseApp = firebase.initializeApp(firebaseConfig);
+   const db = firebaseApp.firestore();
+   const auth = firebase.auth();
+   const storage = firebase.storage();
+   const provider = new firebase.auth.GoogleAuthProvider();
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   export { db, auth, storage, provider };
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Run the app:
+   ```sh
+   npm start
+   ```
 
-### Code Splitting
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Login**: Click on the "Login To Google Drive" button to sign in with your Google account.
+- **Upload Files**: Click the "New" button on the sidebar to upload files.
+- **Manage Files**: View, search, and manage your uploaded files.
 
-### Analyzing the Bundle Size
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Contributions are welcome! Please create a pull request or open an issue to discuss any changes.
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-### Advanced Configuration
+## Acknowledgements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Google Drive for the inspiration.
+- Firebase for providing a comprehensive backend solution.
+- The React community for continuous support and development.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Author**: [Aditya Gangil](https://github.com/adityagangil)
